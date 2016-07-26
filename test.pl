@@ -2,6 +2,6 @@ use v6;
 
 say "starting";
 use lib "lib";
-#use English;
+use English;
 
 say "test";
