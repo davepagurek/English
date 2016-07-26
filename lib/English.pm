@@ -2,18 +2,9 @@ use v6;
 
 unit module English;
 
+use English::Grammar;
 use English::Types;
 
-my token word {
-  \w+
-}
-
-my token noun {
-  <word> <?{~$/ ~~ English::Types::Noun}>
-}
-
-my $sentence = "The quick brown fox jumped over the lazy dog";
-$sentence.say;
-$sentence.split(" ").map(-> $w {
-  ?($w ~~ /^<noun>/)
-}).say;
+say "2";
+say "the" ~~ English::Types::Article;
+say English::Grammar.parse: "The quick brown fox jumped";
