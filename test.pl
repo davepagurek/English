@@ -1,7 +1,7 @@
 use v6;
 
-say "starting";
 use lib "lib";
 use English;
 
-say "test";
+#say English::Grammar.parse: "The quick brown fox jumped over the lazy dog.";
+say English::Grammar.parse: "I went to the store today";

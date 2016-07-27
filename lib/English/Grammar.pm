@@ -5,29 +5,33 @@ use Grammar::Tracer;
 grammar English::Grammar {
   token TOP { ^ <sentence> $ }
 
-  proto token sentence {*}
-  token sentence:sym<compound> {
+  proto regex sentence {*}
+  regex sentence:sym<compound> {
     [ [ <independent-clause> ','? ]+ % <conj>] <end>?
   }
 
-  token independent-clause {
+  regex independent-clause {
     <NP> <.ws> <VP>
   }
 
-  token NP {
+  regex NP {
     [<article> <.ws>]? [<ADJP> <.ws>]? [ <noun>+ % <.ws> ]
   }
 
-  token VP {
-    [[ [<ADVP> <.ws>]? <verb> ]+ % <.ws>] [<.ws> <NP>]?
+  regex VP {
+    [[ [$<pre>=<ADVP> <.ws>]? <verb> [<.ws> $<post>=<ADVP>]?]+ % <.ws>] [<.ws> <NP>]? [<.ws> <ADVP>]? [<.ws> <PP>]? [<.ws> <ADVP>]?
   }
 
-  token ADJP {
+  regex ADJP {
     [ [<ADVP> <.ws>]? <adj> ]+ % <.ws>
   }
 
-  token ADVP {
+  regex ADVP {
     <adv>+ % <.ws>
+  }
+
+  regex PP {
+    <prep> <.ws> <NP>
   }
 
   token word { \w+ }
