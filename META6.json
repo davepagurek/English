@@ -1,0 +1,13 @@
+{
+  "perl": "6.c",
+  "name": "English",
+  "version": "0.1.0",
+  "description": "A grammar for basic English sentences",
+  "authors": ["Dave Pagurek"],
+  "provides": {
+    "English": "lib/English.pm",
+    "English::Grammar": "lib/English/Grammar.pm"
+  },
+  "depends": [],
+  "source-url": "git://github.com/davepagurek/English.git"
+}

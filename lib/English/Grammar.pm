@@ -1,7 +1,7 @@
 use v6;
 use English::Types;
 
-use Grammar::Tracer;
+#use Grammar::Tracer;
 grammar English::Grammar {
   token TOP { ^ <sentence> $ }
 
