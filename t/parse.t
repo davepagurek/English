@@ -19,6 +19,7 @@ subtest {
   for @sentences -> $sentence {
     ok(English::Grammar.parse($sentence), $sentence);
   }
+  done-testing;
 }, "Matches valid sentences";
 
 #subtest {
@@ -30,4 +31,7 @@ subtest {
   #for @sentences -> $sentence {
     #nok(English::Grammar.parse($sentence), $sentence);
   #}
+  #done-testing;
 #}, "Doesn't match invalid sentences";
+
+done-testing;
