@@ -22,16 +22,17 @@ subtest {
   done-testing;
 }, "Matches valid sentences";
 
-#subtest {
-  #my @sentences = [
-    #"I already",
-    #"The quick brown fox",
-    #"Went to the the already store.",
-  #];
-  #for @sentences -> $sentence {
-    #nok(English::Grammar.parse($sentence), $sentence);
-  #}
-  #done-testing;
-#}, "Doesn't match invalid sentences";
+subtest {
+  my @sentences = [
+    "I already.",
+    "The fox.",
+    "Went to the the already store.",
+    "Dog.",
+  ];
+  for @sentences -> $sentence {
+    nok(English::Grammar.parse($sentence), $sentence);
+  }
+  done-testing;
+}, "Doesn't match invalid sentences";
 
 done-testing;

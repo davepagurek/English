@@ -6,7 +6,8 @@
   "authors": ["Dave Pagurek"],
   "provides": {
     "English": "lib/English.pm",
-    "English::Grammar": "lib/English/Grammar.pm"
+    "English::Grammar": "lib/English/Grammar.pm",
+    "English::Part": "lib/English/Part.pm"
   },
   "depends": [],
   "source-url": "git://github.com/davepagurek/English.git"
