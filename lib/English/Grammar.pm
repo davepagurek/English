@@ -43,8 +43,8 @@ grammar English::Grammar {
     <word> <?{
       my $w = (~$/).lc;
       $w ~~ English::Part::Verb
-      || ($w.substr(*-2) eq "ed" && $w.substr(0, *-2) ~~ English::Part::Verb)
-      || ($w.substr(*-3) eq "s" && $w.substr(0, *-1) ~~ English::Part::Verb)
+      || ($w.chars > 2 && $w.substr(*-2) eq "ed" && $w.substr(0, *-2) ~~ English::Part::Verb)
+      || ($w.chars > 3 && $w.substr(*-3) eq "s" && $w.substr(0, *-1) ~~ English::Part::Verb)
     }>
   }
   token adv {
