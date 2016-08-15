@@ -1,7 +1,7 @@
 use v6;
 use English::Part;
 
-use Grammar::Tracer;
+#use Grammar::Tracer;
 grammar English::Grammar {
   token TOP { ^ <sentence> $ }
 
@@ -19,7 +19,7 @@ grammar English::Grammar {
   }
 
   regex VP {
-    [[ [$<pre>=<ADVP> <.ws>]? <verb> [<.ws> $<post>=<ADVP>]?]+ % <.ws>] [<.ws> <NP>]? [<.ws> <ADVP>]? [<.ws> <PP> [<.ws> <ADVP>]?]*
+    [[ [<ADVP> <.ws>]? <verb> [<.ws> <ADVP>]?]+ % <.ws>] [<.ws> <NP>]? [<.ws> <ADVP>]? [<.ws> <PP> [<.ws> <ADVP>]?]*
   }
 
   regex ADJP {
