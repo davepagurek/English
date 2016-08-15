@@ -37,14 +37,18 @@ grammar English::Grammar {
   regex word { \w+ }
   
   token noun {
-    <word> <?{~$/ ~~ English::Part::Noun}>
+    <word> <?{
+      my $w = ~$/;
+      $w ~~ English::Part::Noun
+      || ($w.chars > 1 && $w.substr(*-1) eq "s" && $w.substr(0, *-1) ~~ English::Part::Noun)
+    }>
   }
   token verb {
     <word> <?{
       my $w = ~$/;
       $w ~~ English::Part::Verb
       || ($w.chars > 2 && $w.substr(*-2) eq "ed" && $w.substr(0, *-2) ~~ English::Part::Verb)
-      || ($w.chars > 3 && $w.substr(*-3) eq "s" && $w.substr(0, *-1) ~~ English::Part::Verb)
+      || ($w.chars > 1 && $w.substr(*-1) eq "s" && $w.substr(0, *-1) ~~ English::Part::Verb)
     }>
   }
   token adv {
