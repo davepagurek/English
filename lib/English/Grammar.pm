@@ -7,13 +7,8 @@ grammar English::Grammar {
 
   proto regex sentence {*}
   regex sentence:sym<compound> {
-    #<independent-clause:sym<incomplete>>* <independent-clause:sym<complete> <end>?
     [ [ <independent-clause> ','? ]+ % <conj>] <end>?
   }
-
-  #regex independent-clause:sym<incomplete> {
-    #<NP> <.ws> <VP> <conj>
-  #}
 
   regex independent-clause {
     <NP> <.ws> <VP>
@@ -23,13 +18,6 @@ grammar English::Grammar {
     [<article> <.ws>]? [<ADJP> <.ws>]? <noun>
   }
 
-  #regex VP:sym<intransitive> {
-    #[$<pre>=<ADVP> <.ws>]? [<VP:sym<intransitive>> | <verb>] [<.ws> $<post>=<ADVP>]? [<.ws> <PP>]?
-  #}
-
-  #regex VP:sym<transitive> {
-    #[$<pre>=<ADVP> <.ws>]? <VP:sym<intransitive>> [<.ws> $<post>=<ADVP>]? <.ws> <NP> [<.ws> <PP>]?
-  #}
   regex VP {
     [[ [$<pre>=<ADVP> <.ws>]? <verb> [<.ws> $<post>=<ADVP>]?]+ % <.ws>] [<.ws> <NP>]? [<.ws> <ADVP>]? [<.ws> <PP> [<.ws> <ADVP>]?]*
   }
