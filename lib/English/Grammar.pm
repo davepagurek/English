@@ -7,7 +7,7 @@ grammar English::Grammar {
 
   proto regex sentence {*}
   regex sentence:sym<compound> {
-    [ [ <independent-clause> ','? ]+ % <conj>] <end>?
+    [ [ <independent-clause> ','? ]+ % [<.ws> <conj> <.ws>]] <end>?
   }
 
   regex independent-clause {

@@ -20,7 +20,17 @@ subtest {
     ok(English::Grammar.parse($sentence), $sentence);
   }
   done-testing;
-}, "Matches valid sentences";
+}, "Matches valid simple sentences";
+
+subtest {
+  my @sentences = [
+    "I run and I walk."
+  ];
+  for @sentences -> $sentence {
+    ok(English::Grammar.parse($sentence), $sentence);
+  }
+  done-testing;
+}, "Matches valid compound sentences";
 
 subtest {
   my @sentences = [
