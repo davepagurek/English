@@ -1,7 +1,7 @@
 use v6;
 use English::Part;
 
-#use Grammar::Tracer;
+use Grammar::Tracer;
 grammar English::Grammar {
   token TOP { ^ <sentence> $ }
 
@@ -34,30 +34,30 @@ grammar English::Grammar {
     <prep> <.ws> <NP>
   }
 
-  token word { \w+ }
+  regex word { \w+ }
   
   token noun {
-    <word> <?{(~$/).lc ~~ English::Part::Noun}>
+    <word> <?{~$/ ~~ English::Part::Noun}>
   }
   token verb {
     <word> <?{
-      my $w = (~$/).lc;
+      my $w = ~$/;
       $w ~~ English::Part::Verb
       || ($w.chars > 2 && $w.substr(*-2) eq "ed" && $w.substr(0, *-2) ~~ English::Part::Verb)
       || ($w.chars > 3 && $w.substr(*-3) eq "s" && $w.substr(0, *-1) ~~ English::Part::Verb)
     }>
   }
   token adv {
-    <word> <?{(~$/).lc ~~ English::Part::Adv}>
+    <word> <?{~$/ ~~ English::Part::Adv}>
   }
   token adj {
-    <word> <?{(~$/).lc ~~ English::Part::Adj}>
+    <word> <?{~$/ ~~ English::Part::Adj}>
   }
   token article {
-    <word> <?{(~$/).lc ~~ English::Part::Article}>
+    <word> <?{~$/ ~~ English::Part::Article}>
   }
   token prep {
-    <word> <?{(~$/).lc ~~ English::Part::Prep}>
+    <word> <?{~$/ ~~ English::Part::Prep}>
   }
 
   token conj { :i
