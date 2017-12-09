@@ -1,4 +1,5 @@
 language: perl6
 install:
-  - rakudobrew build-panda
-  - panda installdeps .
+  - rakudobrew build-zef
+  - rakudobrew rehash
+  - zef install .
