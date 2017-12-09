@@ -7,8 +7,23 @@
   "provides": {
     "English": "lib/English.pm",
     "English::Grammar": "lib/English/Grammar.pm",
-    "English::Part": "lib/English/Part.pm"
+    "English::Part": "lib/English/Part.pm",
+    "English::AST": "lib/English/AST.pm"
   },
   "depends": [],
+  "resources": [
+    "adj",
+    "adv",
+    "article",
+    "conj",
+    "inter",
+    "noun",
+    "prep",
+    "pro",
+    "verb",
+    "verb_i",
+    "verb_t",
+    "words-clean"
+  ],
   "source-url": "git://github.com/davepagurek/English.git"
 }
